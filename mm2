@@ -1,0 +1,108 @@
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Window = Library.CreateLib("[WINTER EVENT] MM2 | Legend HandlesYT", "BloodTheme")
+
+local Tab = Window:NewTab("Main-Features")
+
+
+local Tab1 = Window:NewTab("Settings")
+
+local Section = Tab:NewSection("Main-Features")
+
+
+
+
+local CredSection = Tab1:NewSection("Settings")
+
+
+Section:NewToggle("AutoFarm Snow Tokens", "AutoFarm Candy", function(Value)
+    a = Value
+        while a do task.wait(3)
+        pcall(function()
+        spawn(function()
+game:GetService('TweenService'):Create(game:GetService('Players')['LocalPlayer'].Character.HumanoidRootPart, TweenInfo.new(1.7, Enum.EasingStyle.Linear), {CFrame = CFrame.new(workspace.Normal.CoinContainer.Coin_Server.Position)}):Play()
+end)
+spawn(function()
+game:GetService('TweenService'):Create(game:GetService('Players')['LocalPlayer'].Character.HumanoidRootPart, TweenInfo.new(1.7, Enum.EasingStyle.Linear), {CFrame = CFrame.new(workspace.Normal.CoinContainer.Coin_Server.Position)}):Play()
+end)
+        end)
+        end
+end)
+
+Section:NewToggle("Bring Snow Tokens (Must Be Close)", "Bring Candies By Becing Close", function(Value)
+    a = Value
+        while a do task.wait(2.9)
+        pcall(function()
+for i,v in pairs(game.Workspace:GetDescendants()) do
+if v.Name == "Coin_Server" then
+v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+end
+end
+  end)
+        end
+end)
+Section:NewButton("Invisible (T, On/Off)", "This may break the way you tp and coins. But you win", function() 
+
+local key = Enum.KeyCode.T -- key to toggle invisibility
+
+--// dont edit script below
+local invis_on = false
+function onKeyPress(inputObject, chat)
+   if chat then return end
+   if inputObject.KeyCode == key then
+       invis_on = not invis_on
+       if invis_on then
+           local savedpos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+           wait()
+           game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0, -200, 0)
+           wait(.15)
+           local Seat = Instance.new('Seat', game.Workspace)
+           Seat.Anchored = false
+           Seat.CanCollide = false
+           Seat.Name = 'invischair'
+           Seat.Transparency = 1
+           Seat.Position = Vector3.new(0, -200, 0)
+           local Weld = Instance.new("Weld", Seat)
+           Weld.Part0 = Seat
+           Weld.Part1 = game.Players.LocalPlayer.Character:FindFirstChild("Torso") or game.Players.LocalPlayer.Character.UpperTorso
+           wait()
+           Seat.CFrame = savedpos
+           game.StarterGui:SetCore("SendNotification", {
+               Title = "Invis On";
+               Duration = 1;
+               Text = "";
+           })
+       else
+           workspace:FindFirstChild('invischair'):Remove()
+           game.StarterGui:SetCore("SendNotification", {
+               Title = "Invis Off";
+               Duration = 1;
+               Text = "";
+           })
+       end
+   end
+end
+
+game:GetService("UserInputService").InputBegan:connect(onKeyPress)
+
+end)
+
+
+Section:NewToggle("Anti AFK", "Anti AFK", function(state)
+
+end)
+
+
+
+
+Section:NewButton("Reset", "Reset", function() 
+     game.Players.LocalPlayer.Character.Humanoid.Health = 0
+end)
+
+CredSection:NewLabel("Made By Legend HandlesYT")
+
+
+CredSection:NewKeybind("Toggle UI", "Toggle The UI", Enum.KeyCode.L, function()
+	Library:ToggleUI()
+end)
