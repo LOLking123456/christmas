@@ -18,7 +18,7 @@ local CredSection = Tab1:NewSection("Settings")
 
 Section:NewToggle("AutoFarm Snow Tokens (WORKS ON NEW MAPS)", "AutoFarm Snow Tokens. WORKS ON THE NEW MAPS!", function(Value)
     a = Value
-        while a do task.wait(3)
+        while a do task.wait(4)
         pcall(function()
         spawn(function()
 game:GetService('TweenService'):Create(game:GetService('Players')['LocalPlayer'].Character.HumanoidRootPart, TweenInfo.new(1.7, Enum.EasingStyle.Linear), {CFrame = CFrame.new(workspace.Christmas.CoinContainer.Coin_Server.Position)}):Play()
@@ -86,6 +86,11 @@ end
 
 game:GetService("UserInputService").InputBegan:connect(onKeyPress)
 
+end)
+
+
+Section:NewButton("Mobile Keyboard", "Mobile Players", function(state)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/advxzivhsjjdhxhsidifvsh/mobkeyboard/main/main.txt", true))()
 end)
 
 
