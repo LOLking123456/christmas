@@ -1,7 +1,7 @@
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 
-local Window = Library.CreateLib("[WINTER EVENT] MM2 | Legend HandlesYT", "BloodTheme")
+local Window = Library.CreateLib("[WINTER EVENT] MM2 | Legend HandlesYT", "Serpent")
 
 local Tab = Window:NewTab("Main-Features")
 
@@ -16,7 +16,7 @@ local Section = Tab:NewSection("Main-Features")
 local CredSection = Tab1:NewSection("Settings")
 
 
-Section:NewToggle("AutoFarm Snow Tokens", "AutoFarm Candy", function(Value)
+Section:NewToggle("AutoFarm Snow Tokens", "AutoFarm Tokens", function(Value)
     a = Value
         while a do task.wait(3)
         pcall(function()
@@ -30,7 +30,7 @@ end)
         end
 end)
 
-Section:NewToggle("Bring Snow Tokens (Must Be Close)", "Bring Candies By Becing Close", function(Value)
+Section:NewToggle("Bring Snow Tokens (Must Be Close)", "Bring Tokens By Being Close", function(Value)
     a = Value
         while a do task.wait(2.9)
         pcall(function()
